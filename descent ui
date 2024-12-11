@@ -3,65 +3,9 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local sp = 16
 local jp = 50
 
-local function espmonster(val)
-if val == true then
-    local folder = game.Workspace:FindFirstChild("Mobs")
-    if folder then
-        for _, object in ipairs(folder:GetChildren()) do
-            if object:IsA("Model") then
-                if not object:FindFirstChild("Highlight") then
-                    local highlight = Instance.new("Highlight")
-                    highlight.FillColor = Color3.fromRGB(145, 11, 1)
-highlight.OutlineTransparency = 1
-                    highlight.Parent = object
-                end
-            end
-        end
-    else
-        print("Folder not found!")
-    end
-else
-    local folder = game.Workspace:FindFirstChild("Mobs")
-    if folder then
-        for _, object in ipairs(folder:GetChildren()) do
-            if object:IsA("Model") then
-                if object:FindFirstChild("Highlight") then
-                    object:FindFirstChild("Highlight"):Destroy()
-    else
-        print("Folder not found!")
-    end
-end
-end
 
-local function espitem(val)
-if val == true then
-    local folder = game.Workspace:FindFirstChild("ItemDrops")
-    if folder then
-        for _, object in ipairs(folder:GetChildren()) do
-            if object:IsA("Model") then
-                if not object:FindFirstChild("Highlight") then
-                    local highlight = Instance.new("Highlight")
-                    highlight.FillColor = Color3.fromRGB(232, 107, 5)
-highlight.OutlineTransparency = 1
-                    highlight.Parent = object
-                end
-            end
-        end
-    else
-        print("Folder not found!")
-    end
-else
-    local folder = game.Workspace:FindFirstChild("ItemDrops")
-    if folder then
-        for _, object in ipairs(folder:GetChildren()) do
-            if object:IsA("Model") then
-                if object:FindFirstChild("Highlight") then
-                    object:FindFirstChild("Highlight"):Destroy()
-    else
-        print("Folder not found!")
-    end
-end
-end
+
+
 
 
 local Window = Rayfield:CreateWindow({
@@ -141,6 +85,35 @@ local Toggle = Tab:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
+local function espmonster(val)
+if val == true then
+    local folder = game.Workspace:FindFirstChild("Mobs")
+    if folder then
+        for _, object in ipairs(folder:GetChildren()) do
+            if object:IsA("Model") then
+                if not object:FindFirstChild("Highlight") then
+                    local highlight = Instance.new("Highlight")
+                    highlight.FillColor = Color3.fromRGB(145, 11, 1)
+highlight.OutlineTransparency = 1
+                    highlight.Parent = object
+                end
+            end
+        end
+    else
+        print("Folder not found!")
+    end
+else
+    local folder = game.Workspace:FindFirstChild("Mobs")
+    if folder then
+        for _, object in ipairs(folder:GetChildren()) do
+            if object:IsA("Model") then
+                if object:FindFirstChild("Highlight") then
+                    object:FindFirstChild("Highlight"):Destroy()
+    else
+        print("Folder not found!")
+    end
+end
+end
 espmonster(Value)
    end,
 })
@@ -150,6 +123,35 @@ local Toggle = Tab:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
+local function espmonster(val)
+if val == true then
+    local folder = game.Workspace:FindFirstChild("Mobs")
+    if folder then
+        for _, object in ipairs(folder:GetChildren()) do
+            if object:IsA("Model") then
+                if not object:FindFirstChild("Highlight") then
+                    local highlight = Instance.new("Highlight")
+                    highlight.FillColor = Color3.fromRGB(145, 11, 1)
+highlight.OutlineTransparency = 1
+                    highlight.Parent = object
+                end
+            end
+        end
+    else
+        print("Folder not found!")
+    end
+else
+    local folder = game.Workspace:FindFirstChild("Mobs")
+    if folder then
+        for _, object in ipairs(folder:GetChildren()) do
+            if object:IsA("Model") then
+                if object:FindFirstChild("Highlight") then
+                    object:FindFirstChild("Highlight"):Destroy()
+    else
+        print("Folder not found!")
+    end
+end
+end
 espitem(Value)
    end,
 })
