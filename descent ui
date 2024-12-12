@@ -41,7 +41,7 @@ local Tab = Window:CreateTab("Main", nil) -- Title, Image
 
 local Slider = Tab:CreateSlider({
    Name = "WalkSpeed",
-   Range = {6, 145},
+   Range = {6, 100},
    Increment = 1,
    Suffix = "Speed",
    CurrentValue = 16,
@@ -53,7 +53,7 @@ sp = Value
 
 local Slider = Tab:CreateSlider({
    Name = "JumpPower",
-   Range = {20, 145},
+   Range = {20, 95},
    Increment = 1,
    Suffix = "Power",
    CurrentValue = 50,
@@ -66,14 +66,12 @@ jp = Value
 local Button = Tab:CreateButton({
    Name = "Brightness",
    Callback = function()
-while wait(1) do
 		local lighting = game.Lighting
 		lighting.Brightness = 2
 		lighting.ClockTime = 14
 		lighting.FogEnd = 100000
 		lighting.GlobalShadows = false
 		lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
-end
    end,
 })
 local Button = Tab:CreateButton({
@@ -88,6 +86,37 @@ local Button = Tab:CreateButton({
                     local highlight = Instance.new("Highlight")
 highlight.OutlineTransparency = 1
                     highlight.FillColor = Color3.fromRGB(212, 0, 0)
+                    highlight.Parent = object
+                end
+            end
+        end
+    else
+        print("Folder not found!")
+    end
+end
+
+Fuckery()
+
+while true do
+    wait(1)
+    Fuckery()
+end
+
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Turret: ESP",
+   Callback = function()
+    local function Fuckery()
+    local folder = game.Workspace:FindFirstChild("EnvironmentalThreats")
+    if folder then
+        for _, object in ipairs(folder:GetChildren()) do
+            if object:IsA("Model") then
+                if not object:FindFirstChild("Highlight") then
+                    local highlight = Instance.new("Highlight")
+highlight.OutlineTransparency = 1
+                    highlight.FillColor = Color3.fromRGB(0, 86, 133)
                     highlight.Parent = object
                 end
             end
@@ -132,6 +161,13 @@ while wait(0.5) do
     wait(1)
     esp()
 end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Elevator: Teleport",
+   Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Elevator.Origin.CFrame
    end,
 })
 
