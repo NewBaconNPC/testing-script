@@ -171,6 +171,42 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Elev
    end,
 })
 
+local Toggle = Tab:CreateToggle({
+   Name = "Item: Auto Grab",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+local plr = game.Players.LocalPlayer
+local char = plr.Character
+local hrp = char.HumanoidRootPart
+local h = char.Humanoid
+
+
+wait(1)
+
+
+
+local Folder = workspace.ItemDrops
+local Inside = Folder:GetChildren()
+
+
+repeat
+    
+   local rnd = Inside[math.random(1, #Inside)]
+
+      hrp.CFrame = rnd.Primary.CFrame
+
+wait(0.035)
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.E,false,game) 
+wait(0.25)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Elevator.Origin.CFrame
+wait(0.1)
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.G,false,game) 
+wait(1.25)
+until Value == false
+   end,
+})
+
 game:GetService("RunService").Heartbeat:Connect(function()
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sp
 game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
