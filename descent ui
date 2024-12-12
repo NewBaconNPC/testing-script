@@ -53,7 +53,7 @@ sp = Value
 
 local Slider = Tab:CreateSlider({
    Name = "JumpPower",
-   Range = {20, 95},
+   Range = {20, 150},
    Increment = 1,
    Suffix = "Power",
    CurrentValue = 50,
