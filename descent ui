@@ -106,9 +106,9 @@ end
 })
 
 local Button = Tab:CreateButton({
-   Name = "Turret: ESP",
+   Name = "Trap: ESP",
    Callback = function()
-    local function Fuckery()
+    local function Fuckery2()
     local folder = game.Workspace:FindFirstChild("EnvironmentalThreats")
     if folder then
         for _, object in ipairs(folder:GetChildren()) do
@@ -126,11 +126,11 @@ highlight.OutlineTransparency = 1
     end
 end
 
-Fuckery()
+Fuckery2()
 
 while true do
     wait(1)
-    Fuckery()
+    Fuckery2()
 end
 
    end,
