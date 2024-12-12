@@ -173,7 +173,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Elev
 
 game:GetService("RunService").Heartbeat:Connect(function()
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sp
-
+game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 game.Players.LocalPlayer.Character.Humanoid.JumpPower = jp
 
 end)
