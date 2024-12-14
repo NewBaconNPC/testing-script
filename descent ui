@@ -94,7 +94,9 @@ local Button = Tab:CreateButton({
     local folder = game.Workspace:FindFirstChild("Mobs")
     if folder then
         for _, object in ipairs(folder:GetChildren()) do
+wait(0.1)
             if object:IsA("Model") then
+wait(0.1)
                 if not object:FindFirstChild("Highlight") then
                     local highlight = Instance.new("Highlight")
 highlight.OutlineTransparency = 1
@@ -125,7 +127,9 @@ local Button = Tab:CreateButton({
     local folder = game.Workspace:FindFirstChild("EnvironmentalThreats")
     if folder then
         for _, object in ipairs(folder:GetChildren()) do
+wait(0.1)
             if object:IsA("Model") then
+wait(0.1)
                 if not object:FindFirstChild("Highlight") then
                     local highlight = Instance.new("Highlight")
 highlight.OutlineTransparency = 1
@@ -156,7 +160,9 @@ local function esp()
     local folder = game.Workspace:FindFirstChild("ItemDrops")
 if folder then
     for _, object in ipairs(folder:GetChildren()) do
+wait(0.1)
         if object:IsA("Model") then
+wait(0.1)
  if not object:FindFirstChild("Highlight") then
             local highlight = Instance.new("Highlight")
                  highlight.FillColor = Color3.fromRGB(212, 99, 0)
