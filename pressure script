@@ -1,0 +1,865 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+
+
+Rayfield:Notify({
+
+   Title = "Welcome! "..game.Players.LocalPlayer.DisplayName,
+
+   Content = "Good to see you!",
+
+   Duration = 3,
+
+   Image = 124342709513109,
+
+})
+
+
+
+local sp = 16
+
+
+
+local function applytext(inst,textlol,rgb)
+
+	local text = Instance.new("BillboardGui")
+
+	text.Name = "esptext"
+
+	text.Adornee = inst
+
+	text.Size = UDim2.new(0, 200, 0, 50)
+
+	text.StudsOffset = Vector3.new(0, 0, 0)
+
+	text.AlwaysOnTop = true
+
+	text.Parent = game.CoreGui
+
+	local label = Instance.new("TextLabel")
+
+	label.Size = UDim2.new(0.6, 0, 0.6, 0)
+
+	label.Text = textlol
+
+	label.TextColor3 = rgb
+
+	label.BackgroundTransparency = 1
+
+	label.TextStrokeTransparency = 0
+
+	label.TextScaled = true
+
+	label.Font = "Jura"
+
+	label.Parent = text
+
+end
+
+
+
+local function moneyesp(inst)
+
+local highlight = Instance.new("Highlight", inst)
+
+
+
+highlight.Archivable = true
+
+highlight.DepthMode = "AlwaysOnTop"
+
+highlight.Enabled = true
+
+highlight.FillColor = Color3.fromRGB(196, 147, 0)
+
+highlight.OutlineColor= Color3.fromRGB(232, 220, 0)
+
+highlight.FillTransparency = 0.6
+
+highlight.OutlineTransparency = 0
+
+end
+
+
+
+local function itemesp_keycard(inst,rgb,rgb2)
+
+local highlight = Instance.new("Highlight", inst)
+
+
+
+highlight.Archivable = true
+
+highlight.DepthMode = "AlwaysOnTop"
+
+highlight.Enabled = true
+
+highlight.FillColor = rgb
+
+highlight.OutlineColor= rgb2
+
+highlight.FillTransparency = 0.6
+
+highlight.OutlineTransparency = 0
+
+end
+
+
+
+local function itemesp_tool(inst,rgb,rgb2)
+
+local highlight = Instance.new("Highlight", inst)
+
+
+
+highlight.Archivable = true
+
+highlight.DepthMode = "AlwaysOnTop"
+
+highlight.Enabled = true
+
+highlight.FillColor = rgb
+
+highlight.OutlineColor= rgb2
+
+highlight.FillTransparency = 0.6
+
+highlight.OutlineTransparency = 0
+
+end
+
+
+
+local Window = Rayfield:CreateWindow({
+
+   Name = "cat's pressure ui",
+
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+
+   LoadingTitle = "cat's pressure ui",
+
+   LoadingSubtitle = "by catdascripter",
+
+   Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+
+
+   DisableRayfieldPrompts = false,
+
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+
+
+   ConfigurationSaving = {
+
+      Enabled = false,
+
+      FolderName = nil, -- Create a custom folder for your hub/game
+
+      FileName = "Big Hub"
+
+   },
+
+
+
+   Discord = {
+
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+
+   },
+
+
+
+   KeySystem = false, -- Set this to true to use our key system
+
+   KeySettings = {
+
+      Title = "Untitled",
+
+      Subtitle = "Key System",
+
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+
+   }
+
+})
+
+
+
+local Tab = Window:CreateTab("Main", 6023426952) -- Title, Image
+
+
+
+local Slider = Tab:CreateSlider({
+
+   Name = "Speed",
+
+   Range = {6, 135},
+
+   Increment = 1,
+
+   Suffix = "%",
+
+   CurrentValue = 16,
+
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(Value)
+
+sp = Value
+
+   end,
+
+})
+
+
+
+local Button = Tab:CreateButton({
+
+   Name = "Brightness",
+
+   Callback = function()
+
+    while wait(1) do
+
+		local lighting = game.Lighting
+
+		lighting.Brightness = 2
+
+		lighting.ClockTime = 14
+
+		lighting.FogEnd = 100000
+
+		lighting.GlobalShadows = false
+
+		lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+
+    end
+
+   end,
+
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+
+   Name = "Instant Intreact",
+
+   CurrentValue = false,
+
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(Value)
+
+   if Value == true then
+
+   workspace.DescendantAdded:Connect(function(inst)
+
+   	if inst:IsA("ProximityPrompt") and Value == true then
+
+		task.wait(0.1)
+
+		inst.HoldDuration = 0
+
+	end
+
+	end)
+
+
+
+	        for i,v in pairs(game.Workspace:GetDescendants()) do
+
+    if v:IsA("ProximityPrompt") then
+
+        task.wait(0.1)
+
+        v.HoldDuration = 0
+
+    end
+
+end
+
+
+
+   end
+
+   end,
+
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+
+   Name = "Item ESP: Money",
+
+   CurrentValue = false,
+
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(val)
+
+if val == true then
+
+	workspace.DescendantAdded:Connect(function(v)
+
+wait(0.2)
+
+if v.Name == "5Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"5$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "10Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"10$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "15Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"15$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "25Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"25$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "50Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"50$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "100Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"100$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "200Currency" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"200$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "Relic" then
+
+wait(0.2)
+
+moneyesp(v)
+
+applytext(v,"500$",Color3.fromRGB(196, 147, 0))
+
+end
+
+end)
+
+
+
+for _,v in pairs(workspace:GetDescendants()) do
+
+if v.Name == "5Currency" then
+
+moneyesp(v)
+
+applytext(v,"5$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "10Currency" then
+
+moneyesp(v)
+
+applytext(v,"10$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "15Currency" then
+
+moneyesp(v)
+
+applytext(v,"15$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "25Currency" then
+
+moneyesp(v)
+
+applytext(v,"25$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "50Currency" then
+
+moneyesp(v)
+
+applytext(v,"50$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "100Currency" then
+
+moneyesp(v)
+
+applytext(v,"100$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "200Currency" then
+
+moneyesp(v)
+
+applytext(v,"200$",Color3.fromRGB(196, 147, 0))
+
+end
+
+if v.Name == "Relic" then
+
+moneyesp(v)
+
+applytext(v,"500$",Color3.fromRGB(196, 147, 0))
+
+end
+
+end
+
+	else
+
+end
+
+   end,
+
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+
+   Name = "Item ESP: Keycard",
+
+   CurrentValue = false,
+
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(val)
+
+if val == true then
+
+	workspace.DescendantAdded:Connect(function(v)
+
+wait(0.2)
+
+if v.Name == "InnerKeyCard" then
+
+wait(0.2)
+
+itemesp_keycard(v,Color3.fromRGB(128, 0, 115),Color3.fromRGB(10, 0, 9))
+
+applytext(v,"Inner Keycard Here!",Color3.fromRGB(128, 0, 115))
+
+end
+
+if v.Name == "NormalKeyCard" then
+
+wait(0.2)
+
+itemesp_keycard(v,Color3.fromRGB(15, 103, 255),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Keycard Here!",Color3.fromRGB(15, 103, 255))
+
+end
+
+if v.Name == "RidgeKeyCard" then
+
+wait(0.2)
+
+itemesp_keycard(v,Color3.fromRGB(255, 98, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Ridge Keycard Here!",Color3.fromRGB(255, 115, 0))
+
+end
+
+end)
+
+
+
+for _,v in pairs(workspace:GetDescendants()) do
+
+if v.Name == "InnerKeyCard" then
+
+itemesp_keycard(v,Color3.fromRGB(128, 0, 115),Color3.fromRGB(10, 0, 9))
+
+applytext(v,"Inner Keycard Here!",Color3.fromRGB(128, 0, 115))
+
+end
+
+if v.Name == "NormalKeyCard" then
+
+itemesp_keycard(v,Color3.fromRGB(15, 103, 255),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Keycard Here!",Color3.fromRGB(15, 103, 255))
+
+end
+
+if v.Name == "RidgeKeyCard" then
+
+itemesp_keycard(v,Color3.fromRGB(255, 98, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Ridge Keycard Here!",Color3.fromRGB(255, 115, 0))
+
+end
+
+end
+
+	else
+
+end
+
+   end,
+
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+
+   Name = "Item ESP: Tools",
+
+   CurrentValue = false,
+
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(val)
+
+if val == true then
+
+workspace.DescendantAdded:Connect(function(v)
+
+wait(0.2)
+
+if v.Name == "Lantern" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 77, 0),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Lantern",Color3.fromRGB(224, 90, 0))
+
+end
+
+if v.Name == "SPRINT" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(0, 224, 150),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"SPRINT Stim",Color3.fromRGB(0, 224, 150))
+
+end
+
+if v.Name == "HealthBoost" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(130, 0, 0),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Perithesene",Color3.fromRGB(130, 0, 0))
+
+end
+
+if v.Name == "CodeBreaker" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(237, 0, 0),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Code Breaker",Color3.fromRGB(237, 0, 0))
+
+end
+
+if v.Name == "Flashlight" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(243, 255, 74),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Flashlight",Color3.fromRGB(243, 255, 74))
+
+end
+
+if v.Name == "FlashBeacon" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 163, 117),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Flash Beacon",Color3.fromRGB(255, 163, 117))
+
+end
+
+if v.Name == "WindupLight" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(145, 58, 0),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Hand-Cranked Flashlight",Color3.fromRGB(145, 58, 0))
+
+end
+
+if v.Name == "Medkit" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(0, 166, 19),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Medkit",Color3.fromRGB(0, 166, 19))
+
+end
+
+if v.Name == "Gummylight" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(0, 255, 0),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Gummy Flashlight",Color3.fromRGB(0, 255, 0))
+
+end
+
+if v.Name == "Blacklight" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(53, 0, 145),Color3.fromRGB(5, 2, 0))
+
+applytext(v,"Blacklight",Color3.fromRGB(53, 0, 145))
+
+end
+
+if v.Name == "DwellerPiece" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(53, 0, 145),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Dweller Chunk",Color3.fromRGB(53, 0, 145))
+
+end
+
+if v.Name == "AltBattery1" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "AltBattery2" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "AltBattery3" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "DefaultBattery1" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "DefaultBattery2" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "DefaultBattery3" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "RoomsBattery" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(255, 111, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Battery",Color3.fromRGB(255, 111, 0))
+
+end
+
+if v.Name == "Document" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(94, 0, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"DOCUMENT!!!",Color3.fromRGB(94, 0, 0))
+
+end
+
+if v.Name == "RedeemerRevolver" then
+
+wait(0.2)
+
+itemesp_tool(v,Color3.fromRGB(217, 155, 0),Color3.fromRGB(255, 255, 255))
+
+applytext(v,"Redeemer!!!",Color3.fromRGB(217, 155, 0))
+
+end
+
+end)
+
+
+
+	else
+
+end
+
+   end,
+
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+
+   Name = "ESP: Monster",
+
+   CurrentValue = false,
+
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+   Callback = function(val)
+
+if val == true then
+
+workspace.DescendantAdded:Connect(function(v)
+
+wait(0.2)
+
+if v.Name == "Angler" then
+
+wait(0.2)
+
+applytext(v,"Angler",Color3.fromRGB(255, 0, 8))
+
+end
+
+if v.Name == "Blitz" then
+
+wait(0.2)
+
+applytext(v,"Blitz",Color3.fromRGB(255, 0, 8))
+
+end
+
+if v.Name == "Pandemonium" then
+
+wait(0.2)
+
+applytext(v,"Pandemonium",Color3.fromRGB(255, 0, 8))
+
+end
+
+if v.Name == "Pandemonium" then
+
+wait(0.2)
+
+applytext(v,"Pandemonium",Color3.fromRGB(255, 0, 8))
+
+end
+
+end)
+
+else
+
+end
+
+end,
+
+})
+
+
+
+game:GetService("RunService").Heartbeat:Connect(function()
+
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sp
+
+end)
