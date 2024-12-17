@@ -10,7 +10,7 @@ Rayfield:Notify({
 
    Duration = 3,
 
-   Image = 124342709513109,
+   Image = 160460779,
 
 })
 
@@ -134,15 +134,15 @@ end
 
 local Window = Rayfield:CreateWindow({
 
-   Name = "cat's pressure ui",
+   Name = "Galaxy Stars UI | Pressure",
 
-   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 160460779, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
-   LoadingTitle = "cat's pressure ui",
+   LoadingTitle = "Galaxy Stars",
 
    LoadingSubtitle = "by catdascripter",
 
-   Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+   Theme = "Amethyst", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
 
 
@@ -845,6 +845,16 @@ if v.Name == "Pandemonium" then
 wait(0.2)
 
 applytext(v,"Pandemonium",Color3.fromRGB(255, 0, 8))
+
+end
+
+if v.Name == "MonsterLocker" then
+
+wait(0.2)
+
+applytext(v,"Dont enter this Locker!",Color3.fromRGB(164, 66, 245))
+
+itemesp_tool(v,Color3.fromRGB(164, 66, 245),Color3.fromRGB(255, 255, 255))
 
 end
 
