@@ -54,6 +54,8 @@ local function applytext(inst,textlol,rgb)
 
 	label.Parent = text
 
+  text.Destroying:Wait()
+  text:Destroy()
 end
 
 
