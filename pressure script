@@ -1,6 +1,8 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+getgenv().Version = "0.0.0_Demo"
 
+local device = game:GetService("UserInputService"):GetLastInputType()
 
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
 Rayfield:Notify({
 
@@ -10,7 +12,7 @@ Rayfield:Notify({
 
    Duration = 3,
 
-   Image = 160460779,
+   Image = 160460775,
 
 })
 
@@ -54,14 +56,15 @@ local function applytext(inst,textlol,rgb)
 
 	label.Parent = text
 
-  text.Destroying:Wait()
+  text.Destroying:Wait(0.1)
   text:Destroy()
 end
 
 
 
 local function moneyesp(inst)
-wait(0.1)
+
+wait(0.2)
 
 local highlight = Instance.new("Highlight", inst)
 
@@ -86,7 +89,6 @@ end
 
 
 local function itemesp_keycard(inst,rgb,rgb2)
-wait(0.1)
 
 local highlight = Instance.new("Highlight", inst)
 
@@ -136,11 +138,11 @@ end
 
 local Window = Rayfield:CreateWindow({
 
-   Name = "Galaxy Stars UI | Pressure",
+   Name = "Astraly UI | Pressure",
 
-   Icon = 160460779, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 160460775, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
-   LoadingTitle = "Galaxy Stars",
+   LoadingTitle = "|Astraly|",
 
    LoadingSubtitle = "by catdascripter",
 
@@ -200,6 +202,11 @@ local Window = Rayfield:CreateWindow({
 
 })
 
+local TabInfo = Window:CreateTab("Info", 6026568210) -- Title, Image
+
+local LabelExe = TabInfo:CreateLabel("Executor: "..identifyexecutor(), 6034509993)
+
+local LabelVer = TabInfo:CreateLabel("UI Version: "..getgenv().Version, 6023426938)
 
 
 local Tab = Window:CreateTab("Main", 6023426952) -- Title, Image
