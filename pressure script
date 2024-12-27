@@ -1,26 +1,18 @@
 getgenv().Version = "0.0.0_Demo"
 
-local device = game:GetService("UserInputService"):GetLastInputType()
+warn("[Astraly] Loading... please wait...")
+
+local p = Instance.new("Part")
+p.Name = "Astraly_Safespot"
+p.Position = Vector3.new(-34, 1494, -1120)
+p.Size = Vector3.new(100, 10, 100)
+p.Transparency = 0
+p.Anchored = true  
+p.Parent = workspace
 
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua'))()
 
-Rayfield:Notify({
-
-   Title = "Welcome! "..game.Players.LocalPlayer.DisplayName,
-
-   Content = "Good to see you!",
-
-   Duration = 3,
-
-   Image = 160460775,
-
-})
-
-
-
 local sp = 16
-
-
 
 local function applytext(inst,textlol,rgb)
 
@@ -202,6 +194,19 @@ local Window = Rayfield:CreateWindow({
 
 })
 
+Rayfield:Notify({
+
+   Title = "Welcome! "..game.Players.LocalPlayer.DisplayName,
+
+   Content = "Good to see you!",
+
+   Duration = 3,
+
+   Image = 160460775,
+
+})
+
+
 local TabInfo = Window:CreateTab("Info", 6026568210) -- Title, Image
 
 local LabelExe = TabInfo:CreateLabel("Executor: "..identifyexecutor(), 6034509993)
@@ -209,7 +214,7 @@ local LabelExe = TabInfo:CreateLabel("Executor: "..identifyexecutor(), 603450999
 local LabelVer = TabInfo:CreateLabel("UI Version: "..getgenv().Version, 6023426938)
 
 
-local Tab = Window:CreateTab("Main", 6023426952) -- Title, Image
+local Tab = Window:CreateTab("Player", 6023426952) -- Title, Image
 
 
 
@@ -311,9 +316,9 @@ end
 
 })
 
+local Tab2 = Window:CreateTab("ESP", 6031763426) -- Title, Image
 
-
-local Toggle = Tab:CreateToggle({
+local Toggle = Tab2:CreateToggle({
 
    Name = "Item ESP: Money",
 
@@ -491,7 +496,7 @@ end
 
 
 
-local Toggle = Tab:CreateToggle({
+local Toggle = Tab2:CreateToggle({
 
    Name = "Item ESP: Keycard",
 
@@ -579,7 +584,7 @@ end
 
 
 
-local Toggle = Tab:CreateToggle({
+local Toggle = Tab2:CreateToggle({
 
    Name = "Item ESP: Tools",
 
@@ -809,7 +814,7 @@ end
 
 
 
-local Toggle = Tab:CreateToggle({
+local Toggle = Tab2:CreateToggle({
 
    Name = "ESP: Monster",
 
@@ -833,13 +838,6 @@ applytext(v,"Angler",Color3.fromRGB(255, 0, 8))
 
 end
 
-if v.Name == "Blitz" then
-
-wait(0.2)
-
-applytext(v,"Blitz",Color3.fromRGB(255, 0, 8))
-
-end
 
 if v.Name == "Pandemonium" then
 
@@ -849,13 +847,6 @@ applytext(v,"Pandemonium",Color3.fromRGB(255, 0, 8))
 
 end
 
-if v.Name == "Pandemonium" then
-
-wait(0.2)
-
-applytext(v,"Pandemonium",Color3.fromRGB(255, 0, 8))
-
-end
 
 if v.Name == "MonsterLocker" then
 
@@ -864,6 +855,69 @@ wait(0.2)
 applytext(v,"Dont enter this Locker!",Color3.fromRGB(164, 66, 245))
 
 itemesp_tool(v,Color3.fromRGB(164, 66, 245),Color3.fromRGB(255, 255, 255))
+
+end
+
+if v.Name == "TricksterRoom" then
+
+wait(0.2)
+
+applytext(v,"Dont enter this Door!",Color3.fromRGB(117, 84, 0))
+
+
+end
+
+if v.Name == "Pinkie" then
+
+wait(0.2)
+
+applytext(v,"Pinkie",Color3.fromRGB(117, 0, 113))
+
+
+end
+
+if v.Name == "Froger" then
+
+wait(0.2)
+
+applytext(v,"Froger",Color3.fromRGB(179, 173, 0))
+
+
+end
+
+if v.Name == "Blitz" then
+
+wait(0.2)
+
+applytext(v,"Blitz",Color3.fromRGB(140, 140, 140))
+
+
+end
+
+if v.Name == "Chainsmoker" then
+
+wait(0.2)
+
+applytext(v,"Chainsmoker",Color3.fromRGB(83, 150, 0))
+
+
+end
+
+if v.Name == "WallDweller" then
+
+wait(0.2)
+
+applytext(v,"WallDweller",Color3.fromRGB(161, 157, 137))
+
+
+end
+
+if v.Name == "Candlebearers" then
+
+wait(0.2)
+
+applytext(v,"Candlebearer",Color3.fromRGB(84, 81, 66))
+
 
 end
 
@@ -877,6 +931,53 @@ end,
 
 })
 
+local TabM = Window:CreateTab("Monsters", 6031071053) -- Title, Image
+
+local Toggle = TabM:CreateToggle({
+   Name = "Auto-Hide",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+if Value == true then
+workspace.DescendantAdded:Connect(function(v)
+wait(0.2)
+if v.Name == "Angler" or v.Name == "Blitz" or v.Name == "Pinkie" or v.Name == "Chainsmoker" or v.Name == "Pandemonium" or v.Name == "Froger" then
+local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			local tp = game:GetService("RunService").Heartbeat:Connect(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Position)
+			end)
+			v.Destroying:Wait(0.04)
+			tp:Disconnect()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+end
+end)
+	else
+end
+   end,
+})
+
+local Toggle = TabM:CreateToggle({
+   Name = "Anti-Monsters [SOME OF THEM WILL BE DELETED]",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+if Value == true then
+workspace.DescendantAdded:Connect(function(v)
+wait(0.2)
+if v.Name == "Eyefestation" or  v.Name == "Searchlights" or v.Name == "Steam" then
+local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			local tp = game:GetService("RunService").Heartbeat:Connect(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Position)
+			end)
+			v.Destroying:Wait()
+			tp:Disconnect()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+end
+end)
+	else
+end
+   end,
+})
 
 
 game:GetService("RunService").Heartbeat:Connect(function()
