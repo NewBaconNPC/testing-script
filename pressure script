@@ -966,12 +966,7 @@ workspace.DescendantAdded:Connect(function(v)
 wait(0.2)
 if v.Name == "Eyefestation" or  v.Name == "Searchlights" or v.Name == "Steam" then
 local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-			local tp = game:GetService("RunService").Heartbeat:Connect(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Position)
-			end)
-			v.Destroying:Wait()
-			tp:Disconnect()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+v:Destroy()
 end
 end)
 	else
